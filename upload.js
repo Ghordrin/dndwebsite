@@ -13,7 +13,6 @@ form.addEventListener('submit', (event) => {
 	}
 	const formData = new FormData();
 	formData.append('file', file);
-
 	fetch('https://api.github.com/repos/ghordrin/dndwebsite/contents/uploads/' + file.name, {
 		method: 'PUT',
 		headers: {
