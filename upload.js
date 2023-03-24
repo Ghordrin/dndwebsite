@@ -8,7 +8,7 @@ form.addEventListener('submit', (event) => {
 	const formData = new FormData();
 	formData.append('file', file);
 
-	fetch('https://api.github.com/repos/ghordrin/dndwebsite/contents/PATH_TO_UPLOAD_DIRECTORY/' + file.name, {
+	fetch('https://api.github.com/repos/ghordrin/dndwebsite/contents/uploads/' + file.name, {
 		method: 'PUT',
 		headers: {
 			'Authorization': 'token ACCESS_TOKEN',
