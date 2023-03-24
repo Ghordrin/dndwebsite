@@ -5,6 +5,12 @@ form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	const fileInput = document.getElementById('file');
 	const file = fileInput.files[0];
+	
+	
+	if (!file) {
+		alert('Please select a file to upload.');
+		return;
+	}
 	const formData = new FormData();
 	formData.append('file', file);
 
