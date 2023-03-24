@@ -2,21 +2,29 @@
 <html>
   <head>
     <title>GitHub Gallery</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <style>
       .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        height: 800px;
-      }
-      .gallery img {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-        margin: 10px;
-      }
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          grid-gap: 10px;
+          margin: 0 auto;
+          max-width: 1200px;
+        }
+
+        .gallery img {
+          width: 100%;
+          height: auto;
+          border-radius: 5px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+          transform: scale(1.1);
+          cursor: pointer;
+        }
     </style>
-  </head>
+   </head>
   <body>
     <div class="gallery">
     <script>
@@ -31,13 +39,24 @@
 
           const gallery = document.querySelector(".gallery");
           images.forEach(image => {
+            const a = document.createElement("a");
+            a.href = image.download_url;
+            a.setAttribute("data-lightbox", "gallery");
             const img = document.createElement("img");
             img.src = image.download_url;
             img.alt = image.name;
-            gallery.appendChild(img);
+            a.appendChild(img);
+            gallery.appendChild(a);
+          });
+
+          lightbox.option({
+            albumLabel: "Image %1 of %2",
+            fadeDuration: 300,
+            resizeDuration: 300,
+            wrapAround: true
           });
         });
     </script>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   </body>
 </html>
