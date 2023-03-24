@@ -16,7 +16,7 @@ form.addEventListener('submit', (event) => {
 	fetch('https://api.github.com/repos/ghordrin/dndwebsite/contents/uploads/' + file.name, {
 		method: 'PUT',
 		headers: {
-			'Authorization': 'token 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',
+			'Authorization': 'token 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',
 			'Content-Type': 'application/vnd.github.v3+json'
 		},
 		body: JSON.stringify({
