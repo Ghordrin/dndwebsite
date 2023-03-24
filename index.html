@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Upload Files</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<h1>Upload Files</h1>
-		<form id="uploadForm" enctype="multipart/form-data">
-			<input type="file" name="file" id="file" required>
-			<button type="submit">Upload</button>
-		</form>
-		<div id="fileList"></div>
-	</div>
-	<script src="upload.js"></script>
-</body>
+  <head>
+    <title>GitHub Gallery</title>
+    <style>
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .gallery img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gallery"></div>
+    <script>
+      const GITHUB_USERNAME = "Ghordrin";
+      const REPO_NAME = "dndwebsite";
+      const IMAGE_FOLDER = "uploads";
+
+      fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${IMAGE_FOLDER}`)
+        .then(response => response.json())
+        .then(data => {
+          const images = data.filter(item => item.type === "file" && item.download_url.includes(".jpg"));
+
+          const gallery = document.querySelector(".gallery");
+          images.forEach(image => {
+            const img = document.createElement("img");
+            img.src = image.download_url;
+            img.alt = image.name;
+            gallery.appendChild(img);
+          });
+        });
+    </script>
+  </body>
 </html>
