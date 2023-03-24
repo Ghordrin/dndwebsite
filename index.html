@@ -1,3 +1,20 @@
-<h1>Hello!</h1>
-
-test
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload Files</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Upload Files</h1>
+		<form id="uploadForm" enctype="multipart/form-data">
+			<input type="file" name="file" id="file" required>
+			<button type="submit">Upload</button>
+		</form>
+		<div id="fileList"></div>
+	</div>
+	<script src="upload.js"></script>
+</body>
+</html>
