@@ -17,7 +17,7 @@ form.addEventListener('submit', (event) => {
 		method: 'PUT',
 		headers: {
 			'Authorization': 'token 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',
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/vnd.github.v3+json'
 		},
 		body: JSON.stringify({
 			message: 'Upload file',
